@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 // import Feedback from './components/Feedback/';
 // import Statistics from './components/Statistics/';
@@ -29,8 +29,7 @@ export class App extends Component {
 // }
 
   render() {
-   
-    // const { good, neutral, bad } = this.state;
+       // const { good, neutral, bad } = this.state;
   
     return (
       <div>
@@ -47,3 +46,5 @@ export class App extends Component {
     )
   }
 }
+
+// dfwvdfvdfv
