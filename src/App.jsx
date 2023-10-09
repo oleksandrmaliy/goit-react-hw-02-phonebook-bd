@@ -1,45 +1,69 @@
 import React, { Component } from "react";
 // import { nanoid } from 'nanoid';
 
-// import Feedback from './components/Feedback/';
+import ContactsList from './components/contacts';
 // import Statistics from './components/Statistics/';
 // import Section from './components/SectionTitle/';
 
+const INITIAL_STATE = {
+  contacts: [],
+  name: ''
+};
+
 export class App extends Component {
   
-  state = {
-    contacts: [],
-    name: '',
-    tel: ''
+  state = {...INITIAL_STATE}
+
+  // handleNameChange = event => {
+  //   console.log(event.currentTarget.value);
+  //   this.setState( {name: event.currentTarget.value} );
+  // }
+
+  // handleTelChange = event => {
+  //   console.log(event.currentTarget.value);
+  //   this.setState( {tel: event.currentTarget.value} );
+  // }
+
+  handleChange = event => {
+    const {name, value} = event.currentTarget;
+    this.setState( {[name]: value} );
   }
 
-  handleNameChange = event => {
-    console.log(event.currentTarget.value);
-    this.setState( {name: event.currentTarget.value} );
+  handleSubmit = event => {
+    event.preventDefault();
+    const {contacts, name} = this.state;
+
+    this.setState ({
+      contacts: contacts.push(name)
+    })
+      
+    this.reset();
+    
+    console.log(contacts, name);
   }
 
-  handleTelChange = event => {
-    console.log(event.currentTarget.value);
-    this.setState( {tel: event.currentTarget.value} );
-  }
-//   onLeaveFeedback = (option) => {
-//         this.setState(prevState => (
-//          {[option]: prevState[option] + 1}
-//         ))
-// }
+  reset = () => {
+    this.setState({ ...INITIAL_STATE, ...this.state.contacts });
+  };
 
   render() {
        // const { good, neutral, bad } = this.state;
   
     return (
       <div>
-        <form> <br/>
+        <h2>Phonebook</h2>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">
-          Name<input type="text" name="name" value={this.state.name} onChange={this.handleNameChange} required />
+          Name<input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
           </label><br/><br/>
-          <label htmlFor="name">
-            Phone<input type="tel" name="tel" value={this.state.tel} onChange={this.handleTelChange} required />
-          </label>
+          {/* <label htmlFor="tel">
+            Phone<input type="tel" name="tel" value={this.state.tel} onChange={this.handleChange} required />
+          </label><br/><br/> */}
+          <button type='submit'>Add contact</button>
+          <h2>Contacts</h2>
+          <div>
+          <ContactsList contacts={this.state.contacts}/>
+          </div>
         </form>
        
       </div>
