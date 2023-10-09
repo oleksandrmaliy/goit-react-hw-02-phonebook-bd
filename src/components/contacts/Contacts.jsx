@@ -1,19 +1,17 @@
 // import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 // import FeedbackOptions from './FeedbackOptions'
+
 
 function ContactsList ({contacts}){
     return (
-        <div>
-            <ul>
-                {contacts.map( contact => 
-                <li>{contact}</li>
-                )}
-            </ul>
-        </div>
-        
-        
-    )}
-
+         <ul>
+            {contacts.map(contact => 
+            <li key={nanoid(5)}>{contact}</li>
+            )}
+        </ul>
+   )}
+   
 export default ContactsList;
 
 // Feedback.propTypes = {
