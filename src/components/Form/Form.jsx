@@ -22,7 +22,7 @@ class ContactForm extends Component {
     //   }
 
     handleSubmit = (values, {resetForm}) => {
-        // event.preventDefault();
+
         const { name, number } = values;
         const contact = ({
           id: nanoid(5), name: name, number: number
