@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { List, ListItem } from './Contacts.styled';
 
-
 function ContactsList ({filteredContacts, deleteContact}){
     return (
          <List>
@@ -11,7 +10,6 @@ function ContactsList ({filteredContacts, deleteContact}){
         </List>
    )}
    
-
 export default ContactsList;
 
 ContactsList.propTypes = {
