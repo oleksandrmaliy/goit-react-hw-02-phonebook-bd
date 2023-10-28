@@ -1,20 +1,20 @@
-// import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
-// import FeedbackOptions from './FeedbackOptions'
+import PropTypes from 'prop-types';
+import { List, ListItem } from './Contacts.styled';
 
 
-function ContactsList ({contacts}){
+function ContactsList ({filteredContacts, deleteContact}){
     return (
-         <ul>
-            {contacts.map(contact => 
-            <li key={nanoid(5)}>{contact}</li>
+         <List>
+            {filteredContacts.map(({id, name, number}) => 
+            <ListItem key={id}>{name}: {number} <button type='button' onClick={() => deleteContact(id)}>Delete</button></ListItem>
             )}
-        </ul>
+        </List>
    )}
    
+
 export default ContactsList;
 
-// Feedback.propTypes = {
-//      options: PropTypes.array.isRequired,
-//      onLeaveFeedback: PropTypes.func.isRequired,
-//      };
+ContactsList.propTypes = {
+    filteredContacts: PropTypes.array.isRequired,
+    deleteContact: PropTypes.func.isRequired,
+     };
